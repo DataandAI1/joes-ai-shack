@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joe's AI Shack – Your Future, Kinda</title>
+  <meta name="description" content="Joe's AI Shack – artisanal, beach-forged intelligence solutions of dubious origin."/>
+  <style>
+    :root{
+      --bg:#0f172a;
+      --card:#111827ee;
+      --ink:#e5e7eb;
+      --muted:#9ca3af;
+      --accent:#22d3ee;
+      --accent-2:#fbbf24;
+      --danger:#fb7185;
+      --ok:#34d399;
+      --sand:#f8f4e3;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji"}
+    a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+    .wrap{max-width:1100px;margin:auto;padding:24px}
+    nav{display:flex;gap:20px;margin-bottom:24px;flex-wrap:wrap;border-bottom:1px dashed #334155;padding-bottom:18px}
+    nav a{font-weight:600;color:var(--muted)} nav a:hover{color:var(--accent)}
+    header{
+      position:relative;
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:0 10px 35px rgba(0,0,0,.45);
+      background: radial-gradient(1000px 300px at 80% 5%, rgba(34,211,238,.15), transparent 60%),
+                  radial-gradient(900px 400px at 5% 100%, rgba(251,191,36,.12), transparent 55%);
+    }
+    header .hero{
+      display:grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap:0;
+    }
+    header img{width:100%;height:100%;object-fit:cover;min-height:260px;filter:contrast(1.05) saturate(1.05)}
+    .sign{
+      display:flex;flex-direction:column;justify-content:center;padding:28px 28px;
+      background:linear-gradient(180deg, rgba(17,24,39,.85), rgba(17,24,39,.65));
+      backdrop-filter: blur(3px);
+    }
+    .logo{
+      font-size: clamp(28px, 5vw, 54px);
+      font-weight: 900;
+      letter-spacing:.5px;
+      line-height:1.05;
+      text-shadow: 0 2px 0 #000, 0 6px 24px rgba(34,211,238,.3);
+    }
+    .tag{margin-top:6px;color:var(--muted);font-weight:600}
+    .marquee{
+      margin-top:12px;border:1px dashed #3f3f46;border-radius:12px;overflow:hidden;position:relative;
+      background: linear-gradient(90deg, rgba(251,191,36,.12), rgba(34,211,238,.12));
+      padding:10px 0;
+      clip-path: inset(0 round 12px);
+    }
+    .marquee span{
+      display:inline-block;white-space:nowrap;
+      animation: slide 18s linear infinite;
+      padding-left:100%;
+      font-weight:700;
+    }
+    @keyframes slide{to{transform:translateX(-100%)}}
+    .cta{
+      margin-top:18px;display:flex;gap:12px;flex-wrap:wrap
+    }
+    .btn{
+      padding:12px 18px;border-radius:999px;border:1px solid #334155;background:#0b1220;color:var(--ink);
+      font-weight:700;box-shadow:0 4px 14px rgba(0,0,0,.25);cursor:pointer
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn.accent{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#0a0a0a;border-color:transparent}
+    .grid{display:grid;grid-template-columns: repeat(3, 1fr);gap:18px;margin:28px 0 8px}
+    .card{
+      background:var(--card);border:1px solid #1f2937;border-radius:20px;padding:18px;position:relative;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.02), 0 20px 40px rgba(0,0,0,.25);
+    }
+    .badge{position:absolute;top:12px;right:12px;font-size:12px;background:#0b1220;border:1px solid #334155;
+      padding:4px 8px;border-radius:999px;color:var(--muted)}
+    .card h3{margin:0 0 6px 0;font-size:20px}
+    .card p{margin:2px 0 0 0;color:#cbd5e1}
+    .price{margin-top:10px;color:var(--accent-2);font-weight:900}
+    .fake-meter{height:7px;border-radius:10px;background:#1f2937;margin-top:10px;overflow:hidden}
+    .fake-meter i{display:block;height:100%;width:var(--w,38%);background:linear-gradient(90deg,var(--ok),var(--accent));}
+    .section h2{font-size:26px;margin:18px 0 6px}
+    .faq details{background:var(--card);border:1px solid #1f2937;border-radius:18px;padding:14px;margin:10px 0}
+    .faq summary{cursor:pointer;font-weight:700}
+    .ticker{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+    .chip{border:1px dashed #374151;border-radius:999px;padding:6px 10px;color:#cbd5e1;font-size:14px}
+    .note{font-size:13px;color:var(--muted)}
+    .footer{margin-top:28px;color:#94a3b8;border-top:1px dashed #334155;padding:18px 0 32px;text-align:center}
+    dialog{border:none}
+    dialog::backdrop{background:rgba(0,0,0,.75);backdrop-filter:blur(4px)}
+    .toggle{
+      display:flex;align-items:center;gap:10px;margin-top:10px;
+      background:var(--card);padding:10px;border-radius:14px;border:1px solid #1f2937;max-width:420px
+    }
+    .switch{appearance:none;width:48px;height:28px;border-radius:999px;background:#374151;position:relative;outline:none;cursor:pointer}
+    .switch:checked{background:linear-gradient(90deg,var(--accent-2),var(--accent))}
+    .switch::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#0b1220;transition:all .2s}
+    .switch:checked::after{left:23px}
+    @media (max-width: 900px){ .grid{grid-template-columns:1fr 1fr} header .hero{grid-template-columns:1fr} }
+    @media (max-width: 560px){ .grid{grid-template-columns:1fr} }
+    /* Sand mode */
+    body.sand{background:var(--sand);color:#1f2937}
+    body.sand .card, body.sand .faq details, body.sand .toggle{background:#fff;border-color:#e5e7eb}
+    body.sand .btn{background:#fff;color:#111827;border-color:#e5e7eb}
+    body.sand .btn.accent{background:linear-gradient(90deg,#fde68a,#7dd3fc)}
+    body.sand .footer{color:#374151;border-color:#e5e7eb}
+    body.sand nav{border-color:#e5e7eb}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a href="#" style="color:var(--accent)">🏠 Home</a>
+      <a href="about.html">📖 About Joe</a>
+      <a href="blog.html">📰 Beach Blog</a>
+      <a href="api.html">🔌 API Docs</a>
+    </nav>
+
+    <header>
+      <div class="hero">
+        <img src="https://raw.githubusercontent.com/user/repo/main/assets/hero.jpg" alt="Joe standin' proud in front of his beach-shack AI lab." onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22400%22%3E%3Crect fill=%22%231f2937%22 width=%22800%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%239ca3af%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22system-ui%22 font-size=%2224%22%3EJoe%27s AI Shack%3C/text%3E%3C/svg%3E'" />
+        <div class="sign">
+          <div class="logo">JOE'S AI SHACK</div>
+          <div class="tag">"Your Future, Kinda."™</div>
+          <div class="marquee" aria-label="Offers">
+            <span> Now with 11% more intelligence • Free sand with every inference • Ethical-ish options available • BYO dataset (USB preferred) • Ask about our Chicken-Backed Blockchain • </span>
+          </div>
+          <div class="cta">
+            <button class="btn accent" id="book">Book a Dubious Demo</button>
+            <button class="btn" id="toggle-sand">Toggle Sand Mode</button>
+          </div>
+          <div class="toggle">
+            <input id="switch" type="checkbox" class="switch" />
+            <label for="switch"><strong>Premium Mode</strong> <span class="note">Adds the word "Enterprise" to things.</span></label>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="section">
+      <h2>Hand-Whittled AI Services</h2>
+      <p class="note">Beach-forged, salt-cured, and occasionally functional.</p>
+      <div class="grid" id="services">
+        <article class="card">
+          <span class="badge">Best Guess</span>
+          <h3>LLM on a Stick</h3>
+          <p>It's a model. On a literal stick. Great for pointing at things you want automated.</p>
+          <div class="fake-meter" title="Accuracy"><i style="--w:41%"></i></div>
+          <div class="price">$19 + 3 seashells</div>
+        </article>
+        <article class="card">
+          <span class="badge">Ethical-ish</span>
+          <h3>Privacy Panini</h3>
+          <p>We hash your vibes, toast your metadata, and swear your secrets taste like bread.</p>
+          <div class="fake-meter"><i style="--w:63%"></i></div>
+          <div class="price">$49 / sandwich</div>
+        </article>
+        <article class="card">
+          <span class="badge">Enterprise*</span>
+          <h3>Agentic Seagull</h3>
+          <p>Autonomous bird-like process orchestrator. Steals tasks right off your plate.</p>
+          <div class="fake-meter"><i style="--w:72%"></i></div>
+          <div class="price">$999 + fries</div>
+        </article>
+      </div>
+      <div class="ticker">
+        <span class="chip">Edge Compute = cooler in the shade</span>
+        <span class="chip">99.1% SLA (Somewhat Likely Availability)</span>
+        <span class="chip">Works offline if you yell loud</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Testimonials (totally real)</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>🐔 "Hen"ry, Local Chicken</h3>
+          <p>"Bok bok bok. (Joe translated my clucks into OKRs. I pecked 'Approved'.)"</p>
+        </article>
+        <article class="card">
+          <h3>🏄 Sandy CTO</h3>
+          <p>"We pivoted from cloud to <em>clouds</em>. An actual weather-based architecture."</p>
+        </article>
+        <article class="card">
+          <h3>🤖 An LLM (probably)</h3>
+          <p>"As an AI, I for one respect Joe's artisanal prompt seasoning."</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section faq">
+      <h2>Frequently Asked Questions</h2>
+      <details>
+        <summary>Is this… legit?</summary>
+        <p>As legit as a satellite dish zip-tied to a dream. Our compliance team is a palm tree.</p>
+      </details>
+      <details>
+        <summary>What's included in "Enterprise"?</summary>
+        <p>We add "for Enterprise" after the product name and nod solemnly. Price doubles.</p>
+      </details>
+      <details>
+        <summary>How do you handle data security?</summary>
+        <p>Your data is stored in a highly distributed system called "the ocean breeze." Bring a USB and we'll look serious.</p>
+      </details>
+      <details>
+        <summary>Do you offer refunds?</summary>
+        <p>Absolutely. In store credit, redeemable for vibes and/or brochures.</p>
+      </details>
+    </section>
+
+    <section class="section">
+      <h2>Menu & Pricing</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Starter Pack</h3>
+          <p>One demo, two buzzwords, and a laminated roadmap.</p>
+          <p class="price">$79</p>
+        </article>
+        <article class="card">
+          <h3>Pro (for Enterprise)</h3>
+          <p>Includes a slide that says "Strategy". We nod slower.</p>
+          <p class="price">$799</p>
+        </article>
+        <article class="card">
+          <h3>Consulting Hour</h3>
+          <p>Joe stares into the middle distance and foresees your backlog.</p>
+          <p class="price">$199/hr</p>
+        </article>
+      </div>
+      <p class="note">*Enterprise means Joe puts on shoes.</p>
+    </section>
+
+    <section class="section">
+      <h2>Contact the Shack</h2>
+      <div class="card">
+        <p>Walk-in: third shack past the suspicious satellite dish. Or use this extremely secure form:</p>
+        <form id="form">
+          <label>What do you need? <br>
+            <input required name="need" placeholder="e.g., 'Agent to schedule my naps'" style="width:100%;padding:12px;border-radius:12px;border:1px solid #334155;background:#0b1220;color:#e5e7eb">
+          </label>
+          <br><br>
+          <label>Email (for vibes receipts) <br>
+            <input required type="email" name="email" placeholder="you@example.com" style="width:100%;padding:12px;border-radius:12px;border:1px solid #334155;background:#0b1220;color:#e5e7eb">
+          </label>
+          <br><br>
+          <button class="btn accent">Send to the Sea</button>
+          <span class="note" id="status"></span>
+        </form>
+      </div>
+    </section>
+
+    <div class="footer">
+      © <span id="year"></span> Joe's AI Shack · Made with recycled semicolons ·
+      <a href="#" id="legal">Legal-ish</a>
+    </div>
+  </div>
+
+  <dialog id="modal">
+    <form method="dialog" style="border:none;background:#111827;color:#e5e7eb;padding:18px;border-radius:16px;min-width:320px">
+      <h3>Terms & Conditions (Sand Edition)</h3>
+      <p>By proceeding you acknowledge that predictions may be wrong, weird, or both. Side effects include spontaneous roadmaps and unplanned KPIs.</p>
+      <menu style="display:flex;justify-content:flex-end;gap:10px">
+        <button class="btn">Close</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <dialog id="demo-modal" style="border:none;background:#111827;color:#e5e7eb;padding:0;border-radius:20px;max-width:500px;box-shadow:0 25px 50px rgba(0,0,0,.5)">
+    <form method="dialog" style="padding:24px">
+      <h2 style="margin:0 0 8px;color:#22d3ee;font-size:28px">📅 Book Your Dubious Demo</h2>
+      <p style="color:#9ca3af;margin:0 0 20px;font-size:14px">Probably shouldn't, but here we are.</p>
+      
+      <div style="background:#0b1220;border:1px solid #1f2937;border-radius:12px;padding:16px;margin-bottom:16px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+          <span style="font-size:20px">⏰</span>
+          <strong>Arrival Window:</strong>
+        </div>
+        <p style="margin:0;color:#cbd5e1;font-size:14px">Between 2-6pm (or whenever the tide cooperates). Joe operates on "beach time" which is legally distinct from actual time.</p>
+      </div>
+
+      <div style="background:#0b1220;border:1px solid #1f2937;border-radius:12px;padding:16px;margin-bottom:16px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+          <span style="font-size:20px">📦</span>
+          <strong>What You'll Get:</strong>
+        </div>
+        <ul style="margin:8px 0;padding-left:20px;color:#cbd5e1;font-size:14px">
+          <li>One (1) demo, performed with varying levels of enthusiasm</li>
+          <li>87-slide deck (73 slides are just pictures of seagulls)</li>
+          <li>Complimentary sand in your shoes</li>
+          <li>A business card written on driftwood</li>
+          <li>Vague promises of "synergy"</li>
+        </ul>
+      </div>
+
+      <div style="background:#78350f;border:1px solid #92400e;border-radius:12px;padding:14px;margin-bottom:16px;border-left:4px solid #fbbf24">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+          <span style="font-size:18px">⚠️</span>
+          <strong style="color:#fbbf24">Important Disclaimers:</strong>
+        </div>
+        <ul style="margin:6px 0;padding-left:20px;font-size:13px;color:#fde68a;line-height:1.5">
+          <li>Demo may include live chickens</li>
+          <li>Results not guaranteed, implied, or particularly likely</li>
+          <li>50% chance Joe shows up in flip-flops</li>
+          <li>If demo runs long, you may be asked to help debug</li>
+          <li>Payment accepted in USD, seashells, or sandwich form</li>
+        </ul>
+      </div>
+
+      <label style="display:block;margin-bottom:16px">
+        <input type="checkbox" id="demo-agree" style="margin-right:8px">
+        <span style="font-size:14px;color:#cbd5e1">I understand this is questionable and I'm doing it anyway</span>
+      </label>
+
+      <menu style="display:flex;justify-content:space-between;gap:12px;margin:0;padding:0">
+        <button class="btn" type="button" onclick="document.getElementById('demo-modal').close()">Escape While I Can</button>
+        <button class="btn accent" type="button" id="confirm-demo" disabled>Book Demo</button>
+      </menu>
+
+      <p id="demo-result" style="margin:16px 0 0;text-align:center;color:#22d3ee;font-size:14px;min-height:20px"></p>
+    </form>
+  </dialog>
+
+  <script>
+    const year = document.getElementById('year'); year.textContent = new Date().getFullYear();
+
+    // Fun: Premium switch appends "for Enterprise" to product cards
+    const sw = document.getElementById('switch');
+    sw.addEventListener('change', () => {
+      document.querySelectorAll('#services .card h3').forEach(h => {
+        if(sw.checked && !h.textContent.includes('for Enterprise')) h.textContent += ' (for Enterprise)';
+        if(!sw.checked) h.textContent = h.textContent.replace(' (for Enterprise)','');
+      });
+    });
+
+    // Toggle sand colorway
+    document.getElementById('toggle-sand').addEventListener('click', ()=>{
+      document.body.classList.toggle('sand');
+    });
+
+    // Fake submit
+    document.getElementById('form').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const status = document.getElementById('status');
+      status.textContent = ' Message placed gently on a seashell and launched toward you. (Might take a tide.)';
+    });
+
+    // Modal
+    const legal = document.getElementById('legal');
+    const modal = document.getElementById('modal');
+    legal.addEventListener('click', (e)=>{ e.preventDefault(); modal.showModal(); });
+
+    // Demo btn easter egg
+    document.getElementById('book').addEventListener('click', ()=>{
+      document.getElementById('demo-modal').showModal();
+    });
+
+    // Demo modal checkbox logic
+    const demoAgree = document.getElementById('demo-agree');
+    const confirmDemo = document.getElementById('confirm-demo');
+    demoAgree.addEventListener('change', () => {
+      confirmDemo.disabled = !demoAgree.checked;
+    });
+
+    // Demo confirmation
+    confirmDemo.addEventListener('click', () => {
+      const demoResult = document.getElementById('demo-result');
+      const bookings = ['Tuesday', 'Wednesday', 'Thursday (probably)', 'Next week sometime', 'When Mercury is in retrograde'];
+      const randomDay = bookings[Math.floor(Math.random() * bookings.length)];
+      demoResult.textContent = `✓ Booked for ${randomDay}! Joe will call you. Or maybe you call Joe. Someone will call someone.`;
+      confirmDemo.disabled = true;
+      confirmDemo.textContent = 'Demo Booked!';
+      setTimeout(() => {
+        document.getElementById('demo-modal').close();
+        demoResult.textContent = '';
+        confirmDemo.disabled = false;
+        confirmDemo.textContent = 'Book Demo';
+        demoAgree.checked = false;
+      }, 3000);
+    });
+
+    // Console easter egg
+    console.log('%cWelcome to Joe\'s AI Shack', 'padding:8px 12px;border-radius:8px;background:#0b1220;color:#22d3ee;font-weight:900');
+    console.log('Hiring: Seagull Wrangler (agent orchestration). BYO fries.');
+  </script>
+</body>
+</html>
