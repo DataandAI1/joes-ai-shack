@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beach Blog – Joe's AI Shack</title>
+  <style>
+    :root{
+      --bg:#0f172a;--card:#111827ee;--ink:#e5e7eb;--muted:#9ca3af;
+      --accent:#22d3ee;--accent-2:#fbbf24;--danger:#fb7185;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans"}
+    a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+    .wrap{max-width:1100px;margin:auto;padding:24px}
+    nav{display:flex;gap:20px;margin-bottom:24px;flex-wrap:wrap;border-bottom:1px dashed #334155;padding-bottom:18px}
+    nav a{font-weight:600;color:var(--muted)} nav a:hover{color:var(--accent)}
+    .hero-sm{
+      background:var(--card);border:1px solid #1f2937;border-radius:20px;padding:32px;
+      box-shadow:0 20px 40px rgba(0,0,0,.25);margin-bottom:28px;
+      background: radial-gradient(800px 250px at 50% 0%, rgba(34,211,238,.1), transparent 70%), var(--card);
+    }
+    .hero-sm h1{margin:0 0 12px;font-size:clamp(32px,5vw,48px);line-height:1.1}
+    .hero-sm .subtitle{color:var(--muted);font-size:18px}
+    .article{
+      background:var(--card);border:1px solid #1f2937;border-radius:20px;padding:28px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.02), 0 20px 40px rgba(0,0,0,.25);
+      margin-bottom:24px;
+    }
+    .article h2{margin:0 0 8px;font-size:26px;color:var(--accent)}
+    .article h2 a{color:var(--accent);text-decoration:none}
+    .article h2 a:hover{color:var(--accent-2)}
+    .meta{display:flex;gap:16px;color:var(--muted);font-size:14px;margin-bottom:18px;flex-wrap:wrap}
+    .tag{background:#1f2937;padding:4px 10px;border-radius:999px;font-size:13px;border:1px solid #334155}
+    .read-more{color:var(--accent-2);font-weight:700;display:inline-block;margin-top:12px}
+    .highlight{background:#1f2937;border-left:3px solid var(--accent);padding:16px;border-radius:8px;margin:16px 0}
+    .footer{margin-top:48px;color:#94a3b8;border-top:1px dashed #334155;padding:18px 0;text-align:center}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a href="index.html">🏠 Home</a>
+      <a href="about.html">📖 About Joe</a>
+      <a href="blog.html" style="color:var(--accent)">📰 Beach Blog</a>
+      <a href="api.html">🔌 API Docs</a>
+    </nav>
+
+    <div class="hero-sm">
+      <h1>Beach Blog</h1>
+      <p class="subtitle">Thoughts on AI, typed between waves and existential dread</p>
+    </div>
+
+    <article class="article">
+      <h2><a href="#">I Asked ChatGPT How To Fix My Surfboard and Now I'm Questioning Everything</a></h2>
+      <div class="meta">
+        <span>📅 September 15, 2025</span>
+        <span>✍️ Joe</span>
+        <span class="tag">Philosophy</span>
+        <span class="tag">Surfing</span>
+      </div>
+      <p>So I had this ding in my board—classic pressure crack from trying to ollie a wave (don't ask)—and I figured, why not ask an LLM for repair advice? I mean, we're all using AI for everything else, right?</p>
+      <p>The response was... technically correct. "Apply marine epoxy resin to the affected area, ensuring proper ventilation and a 2:1 hardener ratio." Great! Except I live in a beach shack where "proper ventilation" means "hoping the wind is blowing the right direction."</p>
+      <div class="highlight">
+        <strong>Key Insight:</strong> AI is incredible at aggregating knowledge that already exists. But it can't tell you that your "workspace" is literally sand and that seagulls WILL try to steal your mixing cup.
+      </div>
+      <p>This got me thinking about how we deploy AI for clients. Everyone wants the chatbot. Nobody wants to admit their "knowledge base" is seven PDFs from 2014 and a Slack channel called #random-stuff.</p>
+      <a href="#" class="read-more">Read full rant →</a>
+    </article>
+
+    <article class="article">
+      <h2><a href="#">Why Your Startup Doesn't Need an AI Strategy (Yet)</a></h2>
+      <div class="meta">
+        <span>📅 August 28, 2025</span>
+        <span>✍️ Joe</span>
+        <span class="tag">Business</span>
+        <span class="tag">Rant</span>
+      </div>
+      <p>Had a call yesterday with a founder who wanted "an AI strategy." I asked what problems they were trying to solve. They said "we need to be AI-first because investors are asking."</p>
+      <p>Cool. Cool cool cool. Let me save you $50K in consulting fees: <strong>you don't need an AI strategy. You need A STRATEGY that might include AI.</strong></p>
+      <p>Here's the test: Can you describe your problem without using the words "leverage," "synergy," or "paradigm"? If no, your problem isn't actually a problem—it's a vibes check for your next board meeting.</p>
+      <div class="highlight">
+        <strong>Joe's Law of AI Adoption:</strong> If your team isn't already using Excel formulas correctly, adding a neural network won't help. Fix the spreadsheet first.
+      </div>
+      <a href="#" class="read-more">Continue reading →</a>
+    </article>
+
+    <article class="article">
+      <h2><a href="#">I Trained a Model on Seagull Behavior and Now I Understand Agentic Systems</a></h2>
+      <div class="meta">
+        <span>📅 August 10, 2025</span>
+        <span>✍️ Joe</span>
+        <span class="tag">Technical</span>
+        <span class="tag">Wildlife</span>
+      </div>
+      <p>Everyone talks about "agentic AI"—these autonomous systems that can plan, reason, and execute tasks. But nobody talks about the OG agentic system: coastal seagulls.</p>
+      <p>Think about it:</p>
+      <ul>
+        <li><strong>Goal-oriented:</strong> Acquire sandwich by any means necessary</li>
+        <li><strong>Adaptive:</strong> Adjusts strategy based on human resistance levels</li>
+        <li><strong>Collaborative:</strong> Coordinates with other seagulls in real-time</li>
+        <li><strong>Persistent:</strong> Will retry failed approaches indefinitely</li>
+      </ul>
+      <p>I spent three weeks observing the local seagull colony and logging their behavior patterns. Trained a simple decision tree model. Accuracy? 89% at predicting which human would get dive-bombed next.</p>
+      <div class="highlight">
+        <strong>Practical Application:</strong> This same model now powers our "Agentic Seagull" product for task orchestration. It's literally just reinforcement learning with french fries as the reward signal.
+      </div>
+      <a href="#" class="read-more">View methodology →</a>
+    </article>
+
+    <article class="article">
+      <h2><a href="#">The Problem with "Enterprise AI" (And Why I Charge More For It Anyway)</a></h2>
+      <div class="meta">
+        <span>📅 July 22, 2025</span>
+        <span>✍️ Joe</span>
+        <span class="tag">Enterprise</span>
+        <span class="tag">Pricing</span>
+      </div>
+      <p>Quick quiz: What's the difference between our "LLM on a Stick" and "LLM on a Stick (for Enterprise)"?</p>
+      <p>If you answered "literally nothing except the price," congratulations—you understand enterprise software better than most VCs.</p>
+      <p>Here's what actually happens when someone asks for "enterprise" features:</p>
+      <ol>
+        <li>I add the word "Enterprise" to the product name</li>
+        <li>I create a 40-slide deck instead of 20</li>
+        <li>I wear shoes to the demo</li>
+        <li>I speak 30% slower and nod more solemnly</li>
+        <li>Price goes up 10x</li>
+      </ol>
+      <p>The dirty secret? Enterprise clients don't want better software. They want <em>the confidence to explain to their boss why they spent $500K</em>. The ROI calculation IS the product.</p>
+      <a href="#" class="read-more">Full confession →</a>
+    </article>
+
+    <article class="article">
+      <h2><a href="#">Prompt Engineering is Just Technical Writing for People Who Skipped English Class</a></h2>
+      <div class="meta">
+        <span>📅 July 3, 2025</span>
+        <span>✍️ Joe</span>
+        <span class="tag">Technical</span>
+        <span class="tag">Hot Take</span>
+      </div>
+      <p>Change my mind: "Prompt engineering" is just rediscovering everything technical writers figured out in the 1990s, but with more JSON and fewer comprehensible documentation standards.</p>
+      <p>Everyone's out here sharing "prompt hacks" like they discovered fire. Meanwhile, every principle is just:</p>
+      <ul>
+        <li>Be specific (technical writing 101)</li>
+        <li>Provide examples (literally how humans learn)</li>
+        <li>Structure your request clearly (again, technical writing)</li>
+        <li>Iterate based on feedback (QA, but make it ✨AI✨)</li>
+      </ul>
+      <p>We're charging $300/hour for "prompt optimization" when the actual skill is "being able to explain what you want without assuming the listener can read your mind."</p>
+      <div class="highlight">
+        <strong>Controversial Opinion:</strong> If you can't explain your task to a junior dev, an LLM won't magically understand it either. The model isn't the problem—your requirements gathering is.
+      </div>
+      <a href="#" class="read-more">Fight me in the comments →</a>
+    </article>
+
+    <article class="article">
+      <h2><a href="#">My Compliance Officer is a Palm Tree and Other Lessons in Regulatory Theater</a></h2>
+      <div class="meta">
+        <span>📅 June 18, 2025</span>
+        <span>✍️ Joe</span>
+        <span class="tag">Compliance</span>
+        <span class="tag">Satire</span>
+      </div>
+      <p>I once had a potential client ask about our "compliance framework." I gestured to the palm tree outside my shack and said "there's our Chief Compliance Officer."</p>
+      <p>They laughed. Then they saw I was serious. Then they asked about our incident response plan. I showed them my phone number written on a piece of driftwood.</p>
+      <p>Here's the thing: half of "AI governance" is security theater designed to make executives feel better about decisions they don't understand. The other half is genuinely important stuff like data privacy and bias testing.</p>
+      <p>How do you tell which is which? <strong>Ask if removing it would actually increase risk.</strong> If the answer is "no, but the auditor expects it," congratulations—you found the theater.</p>
+      <a href="#" class="read-more">More on compliance →</a>
+    </article>
+
+    <div class="footer">
+      © 2025 Joe's AI Shack · Built with recycled semicolons ·
+      <a href="index.html">Back to Home</a>
+    </div>
+  </div>
+</body>
+</html>
